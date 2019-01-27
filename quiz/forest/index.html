@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forest</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<script src="../../js/jquery.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	
+		
+
+</head>
+<body style="background-color: grey;">
+	<nav class="navbar navbar-inverse navbar-custom navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand mr-0 mr-md-2" href="../../index.php">School Bhuvan</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="../../index.php">HOME</a>
+				</li>
+				<li class="dropdown dropdown-hover">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">USER<span class="caret"></span></a>				
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="editprofile.php">Edit Profile</a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#">Setting</a></li>
+						<li class="divider"></li>
+						<li><a href="logout.php">Logout</a></li>
+					</ul>                
+			    </li>
+            </ul>
+	  	</div>
+	</nav>
+	 <!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+	  <div class="modal-dialog">
+	  
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Instructions</h4>
+	      </div>
+	      <div class="modal-body">
+	        <img class="img-responsive" src="../../image/instruction2.gif" alt="" />
+	                1.If you select any option according to the map, then it's result shown after submit quiz /or click on the submit button. <br>	
+	                2. If you select right option then result show how many right answers. <br>
+	                3.if you select wrong options then, results show  how many wrong answers. <br>
+	                4. If you select all correct option then show you are win the quiz. <br>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+	      </div>
+	    </div>
+	    
+	  </div>
+	</div>
+	<script>
+	  $(window).on('load',function(){
+	       $("#myModal").modal();
+	  });
+	 </script>
+	<div class="container">
+		<br><br><br>
+		<div class="panel">
+			<div class="container">
+				<br>
+				<form class="form-group" action="result.php" method="post">
+				<div class="row">
+					<div class="col-lg-6">
+						<label for="img"><h3>Select forest type for area</h3></label>
+						<img src="forest1.png" class="img-responsive" alt="unable to load image" width="550" height="550">	
+					</div>
+					<div class="col-lg-6">
+						
+								<div class="table-responsive">
+									<table class="table table-hover" style="width: 90%;">
+										<tr>
+											<th>Area</th>
+											<th>Forest</th>
+										</tr>
+										<script>
+											for (var i = 0; i < 12; i++) {
+												document.write('<tr><td>'+(i+1)+'</td><td><select class="form-control" name="q'+i+'" ><option value="0">---Select Forest---</option><option value="1">Montane Forest</option><option value="2">Tropical Deciduous Forest</option><option value="3">Tropical Evergreen Forest</option><option value="4">Tropical Thorn Forest</option><option value="5">Mangrove Forest</option></select></td></tr>');
+											}
+										</script>
+									</table>
+								</div>												
+					
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<center>
+							<input type="submit"  class="btn btn-primary" name="submit" value="submit">
+							<input type="reset" class="btn btn-danger">
+						</center>
+					</div>
+				</div>
+				</form>
+				<br>
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+</html>

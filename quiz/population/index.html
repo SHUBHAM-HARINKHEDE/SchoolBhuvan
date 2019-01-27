@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Population</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+</head>
+<script>
+
+var count=0;
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("data", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("data");
+    
+   if(data=='di1' && ev.target.id=='div1')
+   {
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+   }
+   if(data=="di2" && ev.target.id=="div2"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+   }
+    if(data=="di3" && ev.target.id=="div3"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(data=="di4" && ev.target.id=="div4"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(data=="di5" && ev.target.id=="div5"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(count>4){
+      $("#win").modal();
+    }
+
+
+}
+</script>
+<style>
+  .div1,.div2,.div3,.div4,.div5,.div6,.div7{
+      width: 200px;
+      height: 50px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+}
+  .di1,.di2,.di3,.di4,.di5,.di6,.di7{
+      width: 150px;
+      height: 30px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+}
+</style>
+
+<body style="background: grey;">
+    <nav class="navbar navbar-inverse navbar-custom ">
+      <div class="container">
+        <a class="navbar-brand mr-0 mr-md-2" href="../../index.php">School Bhuvan</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="../../index.php">HOME</a>
+          </li>
+          <li class="dropdown dropdown-hover">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">USER<span class="caret"></span></a>        
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="editprofile.php">Edit Profile</a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#">Setting</a></li>
+              <li class="divider"></li>
+              <li><a href="logout.php">Logout</a></li>
+            </ul>                
+            </li>
+              </ul>
+        </div>
+    </nav>
+   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Instructions</h4>
+        </div>
+        <div class="modal-body">
+          <img class="img-responsive" src="../../image/instruction3.gif" alt="">
+          <p><b>1. Drag population density from Drag Section <br>
+             2. Drop on Proper color in Drop section</b> </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <script>
+    $(window).on('load',function(){
+         $("#myModal").modal();
+    });
+  
+  </script>
+    
+  <div class="container"> 
+   
+    <div class="panel">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="container">
+              <h1>Population Density <br> (Persons per sq. Km) - 2011</h1>
+              <img class="img-responsive" src="india-map.jpg" alt="unable to load">
+            </div>       
+          </div>
+          <div class="col-md-3">
+            <div class="container">
+              <br>
+              <h3>Population Area</h3>
+              <br>
+              <div class="div1" style="background-color:#F5942D;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              <div class="div2" style="background-color:#ABCD42;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              <div class="div3" style="background-color:#D4DB5A;" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              <div class="div4" style="background-color:#FCBB54;" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              <div class="div5" style="background-color:#FF0000;" id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="container">
+              <br>
+              <h3>Density in Range</h3>
+              <br>
+              
+              <div class="di4" id="di2" draggable="true" ondragstart="drag(event)">0-100</div><br>
+              <div class="di1" id="di3" draggable="true" ondragstart="drag(event)">100-250</div><br>
+              <div class="di5" id="di4" draggable="true" ondragstart="drag(event)">250-500</div><br>
+               <div class="di2" id="di1" draggable="true" ondragstart="drag(event)">500-1000</div><br>
+              <div class="di3" id="di5" draggable="true" ondragstart="drag(event)">1000 and above</div><br>
+              <br>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="win" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <img class="img-responsive" src="../../image/k.gif" alt="">
+          <p align="center" style="font-size: 30px;font-family: sans-serif;">YOU WIN</p>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    
+
+
+
+</body>
+</html>

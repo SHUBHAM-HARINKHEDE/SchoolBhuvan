@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<script>
+
+var count=0;
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("data", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("data");
+    
+   if(data=='di1' && ev.target.id=='div1')
+   {
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+   }
+   if(data=="di2" && ev.target.id=="div2"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+   }
+    if(data=="di3" && ev.target.id=="div3"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(data=="di4" && ev.target.id=="div4"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(data=="di5" && ev.target.id=="div5"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+    if(data=="di6" && ev.target.id=="div6"){
+      ev.target.appendChild(document.getElementById(data));
+      count++;
+    }
+
+    if(count>5){
+      alert("you win");
+    }
+
+
+}
+</script>
+<style>
+  .div1,.div2,.div3,.div4,.div5,.div6,.div7{
+      width: 200px;
+      height: 50px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+}
+  .di1,.di2,.di3,.di4,.di5,.di6,.di7{
+      width: 150px;
+      height: 30px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+}
+</style>
+
+<body style="background: grey;">
+
+<div class="container-fluid"> 
+  <div class="panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="container">
+            <h1>Major Soil Types in India</h1>
+            <img class="img" class="img-responsive" src="soil.jpg" alt="unable to load" style="width: 500px;">
+          </div>       
+        </div>
+        <div class="col-md-3">
+          <div class="container">
+            <h1>Drop</h1>
+            <br>
+            <div class="div1" style="background-color:#159562;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="div2" style="background-color:#D4ECD6;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="div3" style="background-color:#ECA1A5;" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="div4" style="background-color:#DADEE1;" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="div5" style="background-color:#FFE4E0;" id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="div6" style="background-color:#FDFDD9;" id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="container">
+            <h1>Drag</h1>
+            <br>
+            
+            <div class="di4" id="di4" draggable="true" ondragstart="drag(event)">Black</div><br>
+            <div class="di1" id="di1" draggable="true" ondragstart="drag(event)">Forest&Mountainous</div><br>
+            <div class="di5" id="di5" draggable="true" ondragstart="drag(event)">Laterite</div><br>
+             <div class="di2" id="di2" draggable="true" ondragstart="drag(event)">Alluvial</div><br>
+            <div class="di3" id="di3" draggable="true" ondragstart="drag(event)">Red and Yellow</div><br>
+            <div class="di6" id="di6" draggable="true" ondragstart="drag(event)">Arid</div><br>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<script>
+
+</script>
+
+</body>
+</html>
